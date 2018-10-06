@@ -2,16 +2,25 @@ import { calcRemToPx, calcPxToRem } from "./modules/calcRem.js";
 
 const REM_VALUE = 16;
 
-chrome.commands.onCommand.addListener(function(command) {
-  // alert(command);
+const doInCurrentTab = (tabCallback) => {
+  chrome.tabs.query(
+    { currentWindow: true, active: true },
+    (tabArray) => { tabCallback(tabArray[0]); }
+  );
+}
+
+chrome.commands.onCommand.addListener(command => {
   if (command === "calcPxToRem") {
     chrome.tabs.executeScript({
       code: "window.getSelection().toString();"
     }, selection => {
-        const targetValue = selection[0];
+        const targetValue = parseInt(selection[0]);
         const calculatedRem = calcPxToRem({ targetValue, remValue: REM_VALUE });
-        alert(calculatedRem);
-        // document.querySelector("body").innerText = `${calculatedRem}rem // ${targetValue}px`;
+        
+        const remText = `${calculatedRem}rem; // ${targetValue}px`;
+        doInCurrentTab(tab =>{ 
+          chrome.tabs.sendMessage(tab.id, { action: 'calcPxToRem', value: remText });
+        });
       }
     );
   }
