@@ -7,6 +7,6 @@ const changeSelectedTextInEditor = (value) => {
   }
 }
 
-window.addEventListener('calcPxToRem', event => {
+window.addEventListener('replaceSelection', event => {
   changeSelectedTextInEditor(event.detail.value);
 }, false);

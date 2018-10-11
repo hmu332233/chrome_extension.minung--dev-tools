@@ -9,8 +9,11 @@ s.parentNode.removeChild(s);
 
 
 chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
-  if(message.action === 'calcPxToRem') {
-     let event = new CustomEvent('calcPxToRem', { detail: { value: message.value }});
-     window.dispatchEvent(event);
+
+  switch (message.action) {
+    case 'replaceSelection':
+      let event = new CustomEvent('replaceSelection', { detail: { value: message.value }});
+      window.dispatchEvent(event);
+    break;
   }
 });
