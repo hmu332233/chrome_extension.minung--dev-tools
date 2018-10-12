@@ -24,6 +24,13 @@
        },
       "description": "Calculate px to rem"
     },
+    "addFuncToBind": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+U",
+        "mac": "MacCtrl+Shift+U"
+       },
+      "description": "add bind text to selected func"
+    },
     "_execute_browser_action": {
       "suggested_key": {
         "default": "Ctrl+Shift+F",

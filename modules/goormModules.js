@@ -13,6 +13,24 @@ const replaceSelectedPxToRem = () => {
   });
 };
 
+const replaceSelectedFuncToFuncWithBind = () => {
+  getSelectedText((value) => {
+    const includesThis = /^this\./.test(value);
+    
+    let funcText;
+    if (includesThis) {
+      funcText = `${value} = ${value}.bind(this);`
+    } else {
+      funcText = `this.${value} = this.${value}.bind(this);`
+    }
+
+    doInCurrentTab(tab =>{ 
+      chrome.tabs.sendMessage(tab.id, { action: 'replaceSelection', value: funcText });
+    });
+  });
+}
+
 export {
-  replaceSelectedPxToRem
+  replaceSelectedPxToRem,
+  replaceSelectedFuncToFuncWithBind
 }
