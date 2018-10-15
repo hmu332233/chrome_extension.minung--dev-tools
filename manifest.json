@@ -1,7 +1,7 @@
 {
   "name": "px to rem shortcut",
   "description": "Press Ctrl+Shift+F to calculate px to rem, press Ctrl+Shift+Y to calculate rem to px.",
-  "version": "1.0",
+  "version": "1.1",
   "manifest_version": 2,
   "background": {
     "page": "background.html"
