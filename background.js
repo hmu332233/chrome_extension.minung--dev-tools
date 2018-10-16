@@ -3,15 +3,28 @@ import {
   replaceSelectedFuncToFuncWithBind
  } from "./modules/goormModules.js";
 
-const REM_VALUE = 16;
+// chrome.commands.onCommand.addListener(command => {
+//   switch (command) {
+//     case 'calcPxToRem':
+//       replaceSelectedPxToRem();
+//     break;
+//     case 'addFuncToBind':
+//       replaceSelectedFuncToFuncWithBind();
+//     break;
+//   }
+// });
 
-chrome.commands.onCommand.addListener(command => {
-  switch (command) {
-    case 'calcPxToRem':
-      replaceSelectedPxToRem();
-    break;
-    case 'addFuncToBind':
-      replaceSelectedFuncToFuncWithBind();
-    break;
-  }
+document.addEventListener("DOMContentLoaded", () => {
+  // Handler when the DOM is fully loaded
+  document.querySelector('#testInput').addEventListener('keypress', (e) => {
+    var key = e.which || e.keyCode;
+    if (key === 13) { // 13 is enter
+      console.log(e.target.value);
+      if (e.target.value === '1') {
+        replaceSelectedPxToRem();
+      }  else if (e.target.value === '2') {
+        addFuncToBind();
+      }
+    }
+  });
 });

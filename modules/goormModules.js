@@ -1,6 +1,8 @@
 import { doInCurrentTab, getSelectedText } from "./extensionUtils.js";
 import { calcRemToPx, calcPxToRem } from "./calcRem.js";
 
+const REM_VALUE = 16;
+
 const replaceSelectedPxToRem = () => {
   getSelectedText((value) => {
     const targetValue = parseInt(value);
