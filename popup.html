@@ -2,19 +2,15 @@
 <html>
 
 <head>
-  <style>
-    BODY {
-      width: 520px;
-      min-height: 250px;
-    }
-  </style>
-  
+  <link rel="stylesheet" href="popup.css">
 </head>
 
 <body>
-  <input id="testInput" />
-  1 - calcPxToRem
-  2 - addFuncToBind
+  <div class="features">
+    <div class="features__button selected"id="calcPxToRem">calcPxToRem</div>
+    <div class="features__button" id="addFuncToBind">addFuncToBind</div>
+  </div>
 </body>
+<script type="module" src="popup.js"></script>
 <script type="module" src="background.js"></script>
 </html>

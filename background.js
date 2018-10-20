@@ -16,7 +16,9 @@ import {
 
 document.addEventListener("DOMContentLoaded", () => {
   // Handler when the DOM is fully loaded
-  document.querySelector('#testInput').addEventListener('keypress', (e) => {
+  const $inputDom = document.querySelector('#input');
+  $inputDom.focus();
+  $inputDom.addEventListener('keypress', (e) => {
     var key = e.which || e.keyCode;
     if (key === 13) { // 13 is enter
       console.log(e.target.value);
@@ -25,6 +27,10 @@ document.addEventListener("DOMContentLoaded", () => {
       }  else if (e.target.value === '2') {
         addFuncToBind();
       }
+
+      setTimeout(() => {
+        // window.close();
+      }, 50);
     }
   });
 });
