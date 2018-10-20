@@ -19,11 +19,12 @@ body {
   padding-left: 1rem;
   padding-right: 1rem;
   border-radius: 4px;
-  background-color: #abc;
+  background-color: #cba;
   font-weight: 500;
+  color: white;
 }
 
 .features .features__button.selected {
-  background-color: #cba;
-  color: white;
+  border: 1px solid black;
+  background-color: #e6d3c0;
 }

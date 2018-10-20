@@ -46,9 +46,14 @@ class FeatureSelector {
 }
 
 
-document.addEventListener("DOMContentLoaded", () => {
-  window.a = new FeatureSelector();
-  
-
-  
+document.addEventListener('DOMContentLoaded', () => {
+  const featureSelector = new FeatureSelector();
+  document.body.addEventListener('keydown', (e) => {
+    if (e.keyCode == '37') {
+      featureSelector.selectPrevFeature();
+    }
+    else if (e.keyCode == '39') {
+      featureSelector.selectNextFeature();
+    }
+  });
 });
