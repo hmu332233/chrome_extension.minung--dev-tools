@@ -1,4 +1,29 @@
 body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 520px;
   min-height: 250px;
+  border: 1px solid #efefef;
+}
+
+.features {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.features .features__button {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  border-radius: 4px;
+  background-color: #abc;
+  font-weight: 500;
+}
+
+.features .features__button.selected {
+  background-color: #cba;
+  color: white;
 }
