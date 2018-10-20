@@ -14,22 +14,75 @@ import {
 //   }
 // });
 
-document.addEventListener("DOMContentLoaded", () => {
-  // Handler when the DOM is fully loaded
-  const $inputDom = document.querySelector('#input');
-  $inputDom.focus();
-  $inputDom.addEventListener('keypress', (e) => {
-    var key = e.which || e.keyCode;
-    if (key === 13) { // 13 is enter
-      console.log(e.target.value);
-      if (e.target.value === '1') {
-        replaceSelectedPxToRem();
-      }  else if (e.target.value === '2') {
-        addFuncToBind();
-      }
+class FeatureSelector {
+  constructor(selectedIndex = 0) {
+    this.$featureButtons = document.querySelectorAll('.features__button');
 
+    this.selectedIndex = selectedIndex;
+    this.featureLength = this.$featureButtons.length;
+  }
+
+  increaseIndex() {
+    let nextIndex = this.selectedIndex + 1;
+    if (nextIndex >= this.featureLength) {
+      nextIndex = 0;
+    }
+
+    this.selectedIndex = nextIndex;
+  }
+
+  decreaseIndex() {
+    let nextIndex = this.selectedIndex - 1;
+    if (nextIndex < 0) {
+      nextIndex = this.featureLength - 1;
+    }
+
+    this.selectedIndex = nextIndex;
+  }
+  selectNextFeature() {
+    this.removeSelected();
+    this.increaseIndex();
+    this.addSelected();
+  }
+
+  selectPrevFeature() {
+    this.removeSelected();
+    this.decreaseIndex();
+    this.addSelected();
+  }
+
+  addSelected(selectedIndex = this.selectedIndex) {
+    this.$featureButtons[selectedIndex].classList.add('selected');
+  }
+
+  removeSelected() {
+    const $selectedFeatureButton = document.querySelector('.features__button.selected');
+    $selectedFeatureButton.classList.remove('selected');
+  }
+}
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  const featureSelector = new FeatureSelector();
+  document.body.addEventListener('keydown', (e) => {
+    console.log(e.keyCode);
+    if (e.keyCode == '37') {
+      featureSelector.selectPrevFeature();
+    }
+    else if (e.keyCode == '39') {
+      featureSelector.selectNextFeature();
+    } else if (e.keyCode == '13') {
+      switch (featureSelector.selectedIndex) {
+        case 0:
+          replaceSelectedPxToRem();
+        break;
+        case 1:
+          replaceSelectedFuncToFuncWithBind();
+        break;
+      }
+      
       setTimeout(() => {
-        // window.close();
+        window.close();    
       }, 50);
     }
   });
