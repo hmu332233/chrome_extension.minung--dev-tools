@@ -13,7 +13,16 @@ const getSelectedText = (resultCallback) => {
   });
 };
 
+const getWordUnderCursor = (resultCallback) => {
+  doInCurrentTab(tab =>{ 
+    chrome.tabs.sendMessage(tab.id, { action: 'getWordUnderCursor' }, function (response) {
+      resultCallback(response.value);
+    });
+  });
+}
+
 export {
   doInCurrentTab,
-  getSelectedText
+  getSelectedText,
+  getWordUnderCursor
 }

@@ -1,5 +1,6 @@
-import { doInCurrentTab, getSelectedText } from "./extensionUtils.js";
+import { doInCurrentTab, getSelectedText, getWordUnderCursor } from "./extensionUtils.js";
 import { calcRemToPx, calcPxToRem } from "./calcRem.js";
+import { replaceReactSnippets } from "./replaceReactSnippets.js";
 
 const REM_VALUE = 16;
 
@@ -32,7 +33,17 @@ const replaceSelectedFuncToFuncWithBind = () => {
   });
 }
 
+const replaceWordUnderCursorToReactSnippets = () => {
+  getWordUnderCursor((word) => {
+    const snippet = replaceReactSnippets({ prefix: word });
+    doInCurrentTab(tab =>{ 
+      chrome.tabs.sendMessage(tab.id, { action: 'replaceSelection', value: snippet });
+    });
+  });
+}
+
 export {
   replaceSelectedPxToRem,
-  replaceSelectedFuncToFuncWithBind
+  replaceSelectedFuncToFuncWithBind,
+  replaceWordUnderCursorToReactSnippets
 }

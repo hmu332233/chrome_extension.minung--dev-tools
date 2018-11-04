@@ -34,3 +34,8 @@ const getWordUnderCursor = () => {
 window.addEventListener('replaceSelection', event => {
   changeSelectedTextInEditor(event.detail.value);
 }, false);
+
+window.addEventListener('getWordUnderCursor', event => {
+  const word = getWordUnderCursor();
+  window.postMessage({ action: 'getWordUnderCursor', value: word }, '*');
+}, false);

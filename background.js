@@ -1,6 +1,7 @@
 import { 
   replaceSelectedPxToRem,
-  replaceSelectedFuncToFuncWithBind
+  replaceSelectedFuncToFuncWithBind,
+  replaceWordUnderCursorToReactSnippets
  } from "./modules/goormModules.js";
 
 // chrome.commands.onCommand.addListener(command => {
@@ -65,24 +66,25 @@ class FeatureSelector {
 document.addEventListener('DOMContentLoaded', () => {
   const featureSelector = new FeatureSelector();
   document.body.addEventListener('keydown', (e) => {
-    console.log(e.keyCode);
     if (e.keyCode == '37') {
       featureSelector.selectPrevFeature();
-    }
-    else if (e.keyCode == '39') {
+    } else if (e.keyCode == '39') {
       featureSelector.selectNextFeature();
     } else if (e.keyCode == '13') {
       switch (featureSelector.selectedIndex) {
         case 0:
-          replaceSelectedPxToRem();
+          replaceWordUnderCursorToReactSnippets();
         break;
         case 1:
+          replaceSelectedPxToRem();
+        break;
+        case 2:
           replaceSelectedFuncToFuncWithBind();
         break;
       }
       
       setTimeout(() => {
-        window.close();    
+        window.close();
       }, 50);
     }
   });

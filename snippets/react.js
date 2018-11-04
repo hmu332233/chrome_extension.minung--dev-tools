@@ -1,4 +1,4 @@
-{
+export default {
   "propTypeArray": {
     "prefix": "pta",
     "body": "PropTypes.array,",
@@ -148,5 +148,40 @@
     "prefix": "ptshr",
     "body": "PropTypes.shape({\n\t$0\n}).isRequired,",
     "description": "An object taking on a particular shape required"
+  },
+  "componentDidMount": {
+    "prefix": "cdm",
+    "body": "componentDidMount() {\n\t$0\n}\n",
+    "description": "Invoked once, only on the client (not on the server), immediately after the initial rendering occurs."
+  },
+
+  "componentWillReceiveProps": {
+    "prefix": "cwr",
+    "body": "componentWillReceiveProps(nextProps) {\n\t$0\n}\n",
+    "description": "Invoked when a component is receiving new props. This method is not called for the initial render. [DEPRECATION NOTE]: This method is deprecated in React 16.3"
+  },
+
+  "shouldComponentUpdate": {
+    "prefix": "scu",
+    "body": "shouldComponentUpdate(nextProps, nextState) {\n\t$0\n}\n",
+    "description": "Invoked before rendering when new props or state are being received. "
+  },
+
+  "componentWillUpdate": {
+    "prefix": "cwup",
+    "body": "componentWillUpdate(nextProps, nextState) {\n\t$0\n}\n",
+    "description": "Invoked immediately before rendering when new props or state are being received. [DEPRECATION NOTE]: This method is deprecated in React 16.3"
+  },
+
+  "componentDidUpdate": {
+    "prefix": "cdup",
+    "body": "componentDidUpdate(prevProps, prevState) {\n\t$0\n}\n",
+    "description": "Invoked immediately after the component's updates are flushed to the DOM."
+  },
+
+  "componentWillUnmount": {
+    "prefix": "cwun",
+    "body": "componentWillUnmount() {\n\t$0\n}\n",
+    "description": "Invoked immediately before a component is unmounted from the DOM."
   }
 }
