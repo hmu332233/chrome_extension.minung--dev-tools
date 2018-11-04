@@ -15,10 +15,14 @@ chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
       let replaceSelectionEvent = new CustomEvent('replaceSelection', { detail: { value: message.value }});
       window.dispatchEvent(replaceSelectionEvent);
     break;
+    case 'replaceWordUnderCursor':
+      let replaceWordUnderCursorEvent = new CustomEvent('replaceWordUnderCursor', { detail: { value: message.value }});
+      window.dispatchEvent(replaceWordUnderCursorEvent);
+    break;
     case 'getWordUnderCursor':
       const receive = (event) => {
-         sendResponse(event.data);
-         window.removeEventListener('message', receive);
+        sendResponse(event.data);
+        window.removeEventListener('message', receive);
       }
       window.addEventListener('message', receive);
 

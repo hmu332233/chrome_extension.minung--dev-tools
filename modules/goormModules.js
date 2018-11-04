@@ -37,7 +37,7 @@ const replaceWordUnderCursorToReactSnippets = () => {
   getWordUnderCursor((word) => {
     const snippet = replaceReactSnippets({ prefix: word });
     doInCurrentTab(tab =>{ 
-      chrome.tabs.sendMessage(tab.id, { action: 'replaceSelection', value: snippet });
+      chrome.tabs.sendMessage(tab.id, { action: 'replaceWordUnderCursor', value: snippet });
     });
   });
 }

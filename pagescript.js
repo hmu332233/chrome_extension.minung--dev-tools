@@ -31,6 +31,24 @@ const getWordUnderCursor = () => {
   return null;
 }
 
+const setSelectionUnderCursor = () => {
+  const editor = getActiveEditor();
+  if (editor) {
+    const A1 = editor.getCursor().line;
+    const A2 = editor.getCursor().ch;
+
+    const B1 = editor.findWordAt({line: A1, ch: A2}).anchor.ch;
+    const B2 = editor.findWordAt({line: A1, ch: A2}).head.ch;
+
+    return editor.setSelection({line: A1,ch: B1}, {line: A1,ch: B2});
+  }
+}
+
+window.addEventListener('replaceWordUnderCursor', event => {
+  setSelectionUnderCursor();
+  changeSelectedTextInEditor(event.detail.value);
+}, false);
+
 window.addEventListener('replaceSelection', event => {
   changeSelectedTextInEditor(event.detail.value);
 }, false);

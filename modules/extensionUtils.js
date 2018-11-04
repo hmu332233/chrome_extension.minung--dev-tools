@@ -15,7 +15,7 @@ const getSelectedText = (resultCallback) => {
 
 const getWordUnderCursor = (resultCallback) => {
   doInCurrentTab(tab =>{ 
-    chrome.tabs.sendMessage(tab.id, { action: 'getWordUnderCursor' }, function (response) {
+    chrome.tabs.sendMessage(tab.id, { action: 'getWordUnderCursor' }, (response) => {
       resultCallback(response.value);
     });
   });

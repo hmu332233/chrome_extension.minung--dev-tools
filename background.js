@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
       
       setTimeout(() => {
         window.close();
-      }, 50);
+      }, 100);
     }
   });
 });
