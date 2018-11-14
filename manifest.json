@@ -3,9 +3,6 @@
   "description": "Press Ctrl+Shift+F to calculate px to rem, press Ctrl+Shift+Y to calculate rem to px.",
   "version": "1.3",
   "manifest_version": 2,
-  // "background": {
-  //   "page": "background.html"
-  // },
   "browser_action": {
     "default_popup": "popup.html"
   },
@@ -18,20 +15,6 @@
  ],
  "web_accessible_resources": ["pagescript.js"],
   "commands": {
-    // "calcPxToRem": {
-    //   "suggested_key": {
-    //     "default": "Ctrl+Shift+Y",
-    //     "mac": "MacCtrl+Shift+Y"
-    //    },
-    //   "description": "Calculate px to rem"
-    // },
-    // "addFuncToBind": {
-    //   "suggested_key": {
-    //     "default": "Ctrl+Shift+U",
-    //     "mac": "MacCtrl+Shift+U"
-    //    },
-    //   "description": "add bind text to selected func"
-    // },
     "_execute_browser_action": {
       "suggested_key": {
         "default": "Ctrl+Shift+F",

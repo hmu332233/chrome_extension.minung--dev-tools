@@ -44,9 +44,38 @@ const setSelectionUnderCursor = () => {
   }
 }
 
+const indexOfAll = (str, word) => {
+  if (!str || !word) return [];
+  const regex = new RegExp(word,"gi");
+  const indices = [];
+  let result;
+  while ((result = regex.exec(str))) {
+    indices.push(result.index);
+  }
+  return indices;
+}
+
+const setSelectionsByStringAndWord = (str, word) => {
+  const editor = getActiveEditor();
+
+  const line = editor.getCursor().line;
+  const baseIndex = editor.getCursor().ch;
+
+  const selectionIndexes = indexOfAll(str, word);
+  const selections = selectionIndexes.map(index => {
+    return {
+      anchor: { line, ch: baseIndex + index - str.length },
+      head: { line, ch:  baseIndex + index + 2 - str.length }
+    }
+  })
+
+  editor.setSelections(selections)
+}
+
 window.addEventListener('replaceWordUnderCursor', event => {
   setSelectionUnderCursor();
   changeSelectedTextInEditor(event.detail.value);
+  setSelectionsByStringAndWord(event.detail.value, /\$0/);
 }, false);
 
 window.addEventListener('replaceSelection', event => {
