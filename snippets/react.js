@@ -13,7 +13,7 @@ export default {
 
   "reactJustClassComponent": {
     "prefix": "rcjc",
-    "body": "class ${1:${TM_FILENAME_BASE}} extends Component {\n\trender() {\n\t\treturn (\n\t\t\t<div>\n\t\t\t\t$0\n\t\t\t</div>\n\t\t);\n\t}\n}\n",
+    "body": "class ${1:${TM_FILENAME_BASE}} extends Component {\n\trender() {\n\t\treturn (\n\t\t\t<div>\n\t\t\t\t$0\n\t\t\t</div>\n\t\t);\n\t}\n}",
     "description": "Creates a React component class with ES6 module system"
   },
 
@@ -64,12 +64,12 @@ export default {
 
   "classConstructor": {
     "prefix": "con",
-    "body": "constructor(props) {\n\tsuper(props);\n\t$0\n}\n",
+    "body": "constructor(props) {\n\tsuper(props);\n\t$0\n}",
     "description": "Adds a default constructor for the class that contains props as arguments"
   },
   "classConstructorContext": {
     "prefix": "conc",
-    "body": "constructor(props, context) {\n\tsuper(props, context);\n\t$0\n}\n",
+    "body": "constructor(props, context) {\n\tsuper(props, context);\n\t$0\n}",
     "description": "Adds a default constructor for the class that contains props and context as arguments"
   },
 
@@ -81,43 +81,43 @@ export default {
 
   "componentWillMount": {
     "prefix": "cwm",
-    "body": "\ncomponentWillMount() {\n\t$0\n}\n",
+    "body": "\ncomponentWillMount() {\n\t$0\n}",
     "description": "Invoked once, both on the client and server, immediately before the initial rendering occurs"
   },
 
   "componentDidMount": {
     "prefix": "cdm",
-    "body": "componentDidMount() {\n\t$0\n}\n",
+    "body": "componentDidMount() {\n\t$0\n}",
     "description": "Invoked once, only on the client (not on the server), immediately after the initial rendering occurs."
   },
 
   "componentWillReceiveProps": {
     "prefix": "cwr",
-    "body": "componentWillReceiveProps(nextProps) {\n\t$0\n}\n",
+    "body": "componentWillReceiveProps(nextProps) {\n\t$0\n}",
     "description": "Invoked when a component is receiving new props. This method is not called for the initial render. [DEPRECATION NOTE]: This method is deprecated in React 16.3"
   },
 
   "shouldComponentUpdate": {
     "prefix": "scu",
-    "body": "shouldComponentUpdate(nextProps, nextState) {\n\t$0\n}\n",
+    "body": "shouldComponentUpdate(nextProps, nextState) {\n\t$0\n}",
     "description": "Invoked before rendering when new props or state are being received. "
   },
 
   "componentWillUpdate": {
     "prefix": "cwup",
-    "body": "componentWillUpdate(nextProps, nextState) {\n\t$0\n}\n",
+    "body": "componentWillUpdate(nextProps, nextState) {\n\t$0\n}",
     "description": "Invoked immediately before rendering when new props or state are being received. [DEPRECATION NOTE]: This method is deprecated in React 16.3"
   },
 
   "componentDidUpdate": {
     "prefix": "cdup",
-    "body": "componentDidUpdate(prevProps, prevState) {\n\t$0\n}\n",
+    "body": "componentDidUpdate(prevProps, prevState) {\n\t$0\n}",
     "description": "Invoked immediately after the component's updates are flushed to the DOM."
   },
 
   "componentWillUnmount": {
     "prefix": "cwun",
-    "body": "componentWillUnmount() {\n\t$0\n}\n",
+    "body": "componentWillUnmount() {\n\t$0\n}",
     "description": "Invoked immediately before a component is unmounted from the DOM."
   },
 
@@ -135,7 +135,7 @@ export default {
 
   "componentSetStateFunc": {
     "prefix": "ssf",
-    "body": "this.setState((state, props) => { return { $0 }});\n",
+    "body": "this.setState((state, props) => { return { $0 }});",
     "description": "Performs a shallow merge of nextState into current state"
   },
 
@@ -321,17 +321,17 @@ export default {
   },
   "getSnapshotBeforeUpdate": {
     "prefix": "gsbu",
-    "body": "getSnapshotBeforeUpdate(prevProps, prevState) {\n\t$0\n}\n",
+    "body": "getSnapshotBeforeUpdate(prevProps, prevState) {\n\t$0\n}",
     "description": "Invoked right before the most recently rendered output is committed to e.g. the DOM. It enables your component to capture current values"
   },
   "getDerivedStateFromProps": {
     "prefix": "gdsfp",
-    "body": "static getDerivedStateFromProps(nextProps, prevState) {\n\t$0\n}\n",
+    "body": "static getDerivedStateFromProps(nextProps, prevState) {\n\t$0\n}",
     "description": "Invoked after a component is instantiated as well as when it receives new props."
   },
   "componentDidCatch": {
     "prefix": "cdc",
-    "body": "componentDidCatch(error, info) {\n\t$0\n}\n",
+    "body": "componentDidCatch(error, info) {\n\t$0\n}",
     "description": "Error boundaries catch errors during rendering, in lifecycle methods, and in constructors of the whole tree below them."
   }
 }

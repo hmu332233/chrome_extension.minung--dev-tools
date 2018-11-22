@@ -58,16 +58,24 @@ const indexOfAll = (str, word) => {
 const setSelectionsByStringAndWord = (str, word) => {
   const editor = getActiveEditor();
 
-  const line = editor.getCursor().line;
+  const baseLine = editor.getCursor().line;
   const baseIndex = editor.getCursor().ch;
 
-  const selectionIndexes = indexOfAll(str, word);
-  const selections = selectionIndexes.map(index => {
-    return {
-      anchor: { line, ch: baseIndex + index - str.length },
-      head: { line, ch:  baseIndex + index + 2 - str.length }
-    }
-  })
+  const lines = str.split('\n');
+  const strHeight = lines.length - 1;
+
+  let selections = [];
+  lines.forEach((line, lineIndex) => {
+    const selectionIndexes = indexOfAll(line, word);
+    const lineSelection = selectionIndexes.map(selectionIndex => {
+      return {
+        anchor: { line: baseLine + lineIndex - strHeight, ch: selectionIndex },
+        head: { line: baseLine + lineIndex - strHeight, ch:  selectionIndex + 2 }
+      }
+    });
+
+    selections = [...selections, ...lineSelection];
+  });
 
   editor.setSelections(selections)
 }
